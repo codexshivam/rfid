@@ -41,6 +41,8 @@ class UniVaultDashboard extends StatefulWidget {
 }
 
 class _UniVaultDashboardState extends State<UniVaultDashboard> {
+  static const bool _enableDemoLoginInPublishedBuild = true;
+
   bool isLoggedIn = false;
   bool _isBootLoading = true;
   BackendSessionManager? _backend;
@@ -214,7 +216,7 @@ class _UniVaultDashboardState extends State<UniVaultDashboard> {
               greeting: _timeGreeting(),
               profile: activeProfile,
               onToggleAuth: _toggleAuthState,
-              onDemoLogin: _backend == null
+                onDemoLogin: !_enableDemoLoginInPublishedBuild || _backend == null
                   ? null
                   : () async {
                       final BackendSessionManager manager = _backend!;
