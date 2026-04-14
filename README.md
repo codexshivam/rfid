@@ -109,6 +109,26 @@ flutter pub get
 flutter run
 ```
 
+## Web Publish (Simple GitHub Pages)
+
+1. In GitHub, open Settings > Pages.
+2. Set Source to Deploy from a branch.
+3. Select branch `main` and folder `/docs`.
+
+Build and publish manually:
+
+```bash
+flutter pub get
+flutter build web --release --no-tree-shake-icons --base-href /<your-repository-name>/
+
+rm -rf docs
+mkdir -p docs
+cp -R build/web/* docs/
+touch docs/.nojekyll
+```
+
+Then commit and push `docs/`.
+
 Your site will be available at:
 
 `https://<your-github-username>.github.io/<your-repository-name>/`
