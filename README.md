@@ -131,4 +131,4 @@ Then commit and push `docs/`.
 
 Your site will be available at:
 
-`https://<your-github-username>.github.io/<your-repository-name>/`
+`https://codexshivam.github.io/rfid/`
