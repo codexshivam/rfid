@@ -101,6 +101,7 @@ class _AuthProfilePanelState extends State<AuthProfilePanel>
                           pulseController: _pulseController,
                           pulseScale: _pulseScale,
                           pulseOpacity: _pulseOpacity,
+                          onDemoLogin: widget.onDemoLogin,
                         ),
                 ),
                 const SizedBox(height: 14),
@@ -187,11 +188,13 @@ class _LoggedOutStateCard extends StatelessWidget {
   final AnimationController pulseController;
   final Animation<double> pulseScale;
   final Animation<double> pulseOpacity;
+  final VoidCallback? onDemoLogin;
 
   const _LoggedOutStateCard({
     required this.pulseController,
     required this.pulseScale,
     required this.pulseOpacity,
+    this.onDemoLogin,
   });
 
   @override
