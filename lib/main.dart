@@ -216,10 +216,24 @@ class _UniVaultDashboardState extends State<UniVaultDashboard> {
               greeting: _timeGreeting(),
               profile: activeProfile,
               onToggleAuth: _toggleAuthState,
-                onDemoLogin: !_enableDemoLoginInPublishedBuild || _backend == null
+              onDemoLogin: !_enableDemoLoginInPublishedBuild
                   ? null
                   : () async {
-                      final BackendSessionManager manager = _backend!;
+                      final BackendSessionManager? manager = _backend;
+                      if (manager == null) {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Demo login is unavailable until backend configuration is loaded.',
+                              ),
+                              duration: Duration(milliseconds: 1400),
+                            ),
+                          );
+                        }
+                        return;
+                      }
+
                       await manager.demoLogin(
                         onLogin: (UserProfile profile, List<PasswordSecret> loadedSecrets) async {
                           if (!mounted) {
