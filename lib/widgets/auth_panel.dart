@@ -577,7 +577,7 @@ class _FooterInstruction extends StatelessWidget {
                 ),
               ),
             )
-          else if (onDemoLogin != null)
+          else
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
