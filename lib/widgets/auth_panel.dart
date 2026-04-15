@@ -316,7 +316,7 @@ class _LoggedOutStateCard extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                'Tap your card to unlock the vault and reveal the session controls.',
+                'Tap your card to unlock the app.',
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
@@ -540,8 +540,8 @@ class _FooterInstruction extends StatelessWidget {
               Expanded(
                 child: Text(
                   isLoggedIn
-                      ? 'Tap your RFID card again to lock the vault and end the session.'
-                      : 'Tap the RFID card to unlock your vault.',
+                      ? 'Tap your RFID card again to lock the app.'
+                      : 'Tap the RFID card to unlock the app.',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         height: 1.4,
                         color: UniVaultColors.textSecondary,
@@ -550,59 +550,7 @@ class _FooterInstruction extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          if (isLoggedIn)
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton.icon(
-                onPressed: onToggleAuth,
-                style: FilledButton.styleFrom(
-                  backgroundColor: UniVaultColors.errorColor,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
-                icon: const Icon(
-                  UniVaultIcons.logout,
-                  size: 18,
-                ),
-                label: Text(
-                  'Logout',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                ),
-              ),
-            )
-          else
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton.icon(
-                onPressed: onDemoLogin,
-                style: FilledButton.styleFrom(
-                  backgroundColor: UniVaultColors.primaryAction,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
-                icon: const Icon(
-                  UniVaultIcons.security,
-                  size: 18,
-                ),
-                label: Text(
-                  'Demo Login',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                ),
-              ),
-            ),
+          const SizedBox(height: 5.0),
         ],
       ),
     );

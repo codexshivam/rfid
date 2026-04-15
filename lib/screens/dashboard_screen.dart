@@ -60,9 +60,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void didUpdateWidget(covariant DashboardScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.secrets != widget.secrets) {
-      _allSecrets = List<PasswordSecret>.from(widget.secrets);
-    }
+    _allSecrets = List<PasswordSecret>.from(widget.secrets);
   }
 
   @override

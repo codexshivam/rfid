@@ -13,9 +13,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
     await dotenv.load(fileName: '.env');
-  } catch (_) {
-    // Local/dev environments may run without .env configured yet.
-  }
+  } catch (_) {}
   runApp(const UniVaultApp());
 }
 
@@ -441,13 +439,6 @@ class _LoggedOutBrandingView extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(24),
                     border: Border.all(color: const Color(0xFFE5E7EB)),
-                    // boxShadow: const [
-                    //   BoxShadow(
-                    //     color: Color(0x12000000),
-                    //     blurRadius: 28,
-                    //     offset: Offset(0, 10),
-                    //   ),
-                    // ],
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

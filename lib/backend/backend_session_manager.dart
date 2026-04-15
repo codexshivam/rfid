@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../models/password_secret.dart';
 import '../models/user_profile.dart';
 import 'appwrite_provider.dart';
@@ -60,8 +62,10 @@ class BackendSessionManager {
     required Future<void> Function(UserProfile profile, List<PasswordSecret> secrets)
         onLogin,
   }) async {
+    debugPrint('[RFID] Active tap uid=$rfidUid');
     final UserProfile? profile = await profiles.findProfileByRfidUid(rfidUid);
     if (profile == null) {
+      debugPrint('[RFID] No profile found for uid=$rfidUid');
       return;
     }
 
@@ -79,6 +83,7 @@ class BackendSessionManager {
     required Future<void> Function() onLogout,
   }) async {
     if (!isConfigured) {
+      debugPrint('[RFID] Backend is not configured. Hardware listener not started.');
       return;
     }
 
@@ -87,6 +92,7 @@ class BackendSessionManager {
         await _performLogin(rfidUid, onLogin: onLogin);
       },
       onInactiveTap: () async {
+        debugPrint('[RFID] Session became inactive');
         _activeRfidUid = null;
         await onLogout();
       },

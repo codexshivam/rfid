@@ -57,23 +57,9 @@ class _SecretsTableState extends State<SecretsTable> {
   @override
   void didUpdateWidget(covariant SecretsTable oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final String nextQuery = widget.searchQuery.trim().toLowerCase();
-    final bool queryChanged = nextQuery != _searchQuery;
-    final bool secretsChanged = oldWidget.secrets != widget.secrets;
-
-    if (!queryChanged && !secretsChanged) {
-      return;
-    }
-
-    setState(() {
-      if (secretsChanged) {
-        _allSecrets = List<PasswordSecret>.from(widget.secrets);
-      }
-      if (queryChanged) {
-        _searchQuery = nextQuery;
-      }
-      _refreshVisibleSecrets();
-    });
+    _allSecrets = List<PasswordSecret>.from(widget.secrets);
+    _searchQuery = widget.searchQuery.trim().toLowerCase();
+    _refreshVisibleSecrets();
   }
 
   @override
